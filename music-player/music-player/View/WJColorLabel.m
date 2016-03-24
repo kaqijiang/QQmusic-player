@@ -18,7 +18,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    [self currentColor];
+    [self.currentColor set];
     rect.size.width *= self.progress;
      UIRectFillUsingBlendMode(rect, kCGBlendModeSourceIn);
     

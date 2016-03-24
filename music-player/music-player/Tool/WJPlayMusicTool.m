@@ -13,6 +13,7 @@
 //播放音乐的对象
 @property( nonatomic,strong)AVAudioPlayer *player;
 @property(nonatomic,copy)void(^complete)();
+@property(nonatomic,copy)NSString *fileName;
 @end
 
 @implementation WJPlayMusicTool
@@ -27,6 +28,8 @@
 }
 //播放歌曲
 - (void)playMusicWithFileName:(NSString *)fileName didComplete:(void(^)())complete {
+   if (![self.fileName isEqualToString:fileName]) {
+       self.fileName = fileName;
     //1.1url
     NSString *path = [[NSBundle mainBundle]pathForResource:fileName ofType:nil];
     //1.2error
@@ -38,6 +41,7 @@
         NSLog(@"播放对象实例化失败,%@",error);
         return;
     }
+   }
     //设置代理
     self.player.delegate = self;
     self.complete = complete;

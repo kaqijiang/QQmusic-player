@@ -105,6 +105,7 @@
     [self configUI];
     [self begin];
     self.iconImageView.transform = CGAffineTransformMakeRotation(0);
+    self.silder.value = 0;
 }
 //下一首歌
 - (IBAction)nextBtnClicked {
@@ -116,6 +117,7 @@
     [self configUI];
     [self begin];
     self.iconImageView.transform = CGAffineTransformMakeRotation(0);
+    self.silder.value = 0;
 }
 //滑块
 - (IBAction)silderClicked {
