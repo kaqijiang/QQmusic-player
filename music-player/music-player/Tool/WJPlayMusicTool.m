@@ -9,9 +9,10 @@
 #import "WJPlayMusicTool.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface WJPlayMusicTool ()
+@interface WJPlayMusicTool ()<AVAudioPlayerDelegate>
 //播放音乐的对象
 @property( nonatomic,strong)AVAudioPlayer *player;
+@property(nonatomic,copy)void(^complete)();
 @end
 
 @implementation WJPlayMusicTool
@@ -25,7 +26,7 @@
     return _instance;
 }
 //播放歌曲
-- (void)playMusicWithFileName:(NSString *)fileName {
+- (void)playMusicWithFileName:(NSString *)fileName didComplete:(void(^)())complete {
     //1.1url
     NSString *path = [[NSBundle mainBundle]pathForResource:fileName ofType:nil];
     //1.2error
@@ -58,5 +59,9 @@
 - (void)setCurrentTime:(NSTimeInterval)currentTime {
     self.player.currentTime = currentTime;
 }
-
+#pragma mark- 代理方法 播放完毕调用
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    self.complete();
+}
 @end

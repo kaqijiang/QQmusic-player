@@ -11,6 +11,8 @@
 #import "WJMusicModel.h"
 #import "MJExtension.h"
 #import "WJPlayMusicTool.h"
+#import "WJLyricParser.h"
+#import "WJLyricModel.h"
 
 @interface ViewController ()
 
@@ -38,6 +40,8 @@
 @property( nonatomic,assign)NSInteger currentMusicIndex;
 //定时器方法
 @property( nonatomic,strong)NSTimer *timer;
+// 接收解析过得歌词
+@property (nonatomic, strong) NSArray *lyricsArray;
 //定义判断是不是第一次点击播放
 @property( nonatomic,assign)int num;
 @end
@@ -118,13 +122,13 @@
 #pragma mark- UI界面配置
 - (void)configUI {
     //从数组中取出当前歌曲模型数据。给界面赋值
-    WJMusicModel *model = self.musicArray[self.currentMusicIndex];
+    WJMusicModel *musicModel = self.musicArray[self.currentMusicIndex];
     //歌手
-    self.singerLabel.text = model.singer;
+    self.singerLabel.text = musicModel.singer;
     //专辑
-    self.albumLabel.text = model.album;
+    self.albumLabel.text = musicModel.album;
     //图片 取出图片 设置给头像和背景
-    UIImage *image = [UIImage imageNamed:model.image];
+    UIImage *image = [UIImage imageNamed:musicModel.image];
     self.blackImageView.image = image;
     self.iconImageView.image = image;
 //    self.playBtn.selected = NO;
@@ -135,14 +139,14 @@
     //创建单利
     WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
     //设置总时间
-    self.durationLabel.text = [self stringWithTimer:musicTool.duration];
+//    self.durationLabel.text = [self stringWithTimer:musicTool.duration];
+    self.lyricsArray = [WJLyricParser lyricParserWithFileName:musicModel.lrc];
     if (!self.num) {
         [musicTool pause];
         self.playBtn.selected = NO;
          [self turnOffTimer];
         self.num++;
     }
-    
 }
 #pragma mark- 定时器创建移除
 - (void)turnOnTimer {
@@ -163,12 +167,27 @@
     self.silder.value = musicTool.currentTime / musicTool.duration;
     //当前时间
     self.currentLabel.text = [self stringWithTimer:musicTool.currentTime];
+    self.durationLabel.text = [self stringWithTimer:musicTool.duration];
     //歌词
     [self updateWithLyric];
 }
 #pragma mark- 歌词显示的方法
 - (void)updateWithLyric {
     
+    WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
+    for (NSInteger i = 0; i < self.lyricsArray.count; i++) {
+        WJLyricModel *firstLyric = self.lyricsArray[i];
+        WJLyricModel *nextLyric = nil;
+        if (i == self.lyricsArray.count - 1) {
+            nextLyric = self.lyricsArray[i];
+        } else {
+            nextLyric = self.lyricsArray[i + 1];
+        }
+        //判断时间
+        if (musicTool.currentTime >= firstLyric.time && musicTool.currentTime < nextLyric.time) {
+            self.lyricLabel.text = firstLyric.content;
+        }
+    }
 }
 //时间转换
 - (NSString *)stringWithTimer:(NSTimeInterval)time {
