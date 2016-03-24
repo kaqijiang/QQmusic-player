@@ -38,6 +38,9 @@
         NSLog(@"播放对象实例化失败,%@",error);
         return;
     }
+    //设置代理
+    self.player.delegate = self;
+    self.complete = complete;
     //2准备播放
     [self.player prepareToPlay];
     //3播放

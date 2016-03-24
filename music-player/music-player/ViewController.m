@@ -85,7 +85,9 @@
         [self turnOffTimer];
     }else {
         //播放
-        [musicTool playMusicWithFileName:musicModel.mp3];
+        [musicTool playMusicWithFileName:musicModel.mp3 didComplete:^{
+            [self nextBtnClicked];
+        }];
         //让定时器一开始不加载 不让头像转
          [self turnOnTimer];
         

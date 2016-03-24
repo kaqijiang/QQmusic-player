@@ -17,7 +17,7 @@
 //当前时间
 @property( nonatomic,assign)NSTimeInterval currentTime;
 //播放歌曲
-- (void)playMusicWithFileName:(NSString *)fileName;
+- (void)playMusicWithFileName:(NSString *)fileName didComplete:(void(^)())complete;
 //暂停
 - (void)pause;
 
