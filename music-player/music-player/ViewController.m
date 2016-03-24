@@ -103,6 +103,8 @@
     UIImage *image = [UIImage imageNamed:model.image];
     self.blackImageView.image = image;
     self.iconImageView.image = image;
+    //调用播放 为了出来总时间
+    [self begin];
     //创建单利
     WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
     //设置总时间
