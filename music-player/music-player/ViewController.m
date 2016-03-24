@@ -36,7 +36,10 @@
 @property( nonatomic,strong)NSArray *musicArray;
 //设置一个索引 用来记录当前播放的歌曲 默认是0
 @property( nonatomic,assign)NSInteger currentMusicIndex;
-
+//定时器方法
+@property( nonatomic,strong)NSTimer *timer;
+//定义判断是不是第一次点击播放
+@property( nonatomic,assign)int num;
 @end
 
 @implementation ViewController
@@ -67,15 +70,24 @@
 }
 //开始按钮点击事件
 - (IBAction)begin {
+    
     WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
     //取出模型数据
     WJMusicModel *musicModel = self.musicArray[self.currentMusicIndex];
     //判断
     if (self.playBtn.selected) {
         [musicTool pause];
+        //移除定时器
+        [self turnOffTimer];
     }else {
         //播放
         [musicTool playMusicWithFileName:musicModel.mp3];
+        //让定时器一开始不加载 不让头像转
+        if (self.num) {
+            //开启定时器
+            [self turnOnTimer];
+        }
+        self.num++;
     }
     self.playBtn.selected = !self.playBtn.selected;
 }
@@ -124,7 +136,25 @@
     [musicTool pause];
     self.playBtn.selected = NO;
 }
-
+#pragma mark- 定时器创建移除
+- (void)turnOnTimer {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateWithTimer) userInfo:nil repeats:YES];
+}
+- (void)turnOffTimer {
+    [self.timer invalidate];
+}
+#pragma mark- 定时器调用方法 动态设置数据
+- (void)updateWithTimer {
+    //歌词
+    //头像旋转
+    self.iconImageView.transform = CGAffineTransformRotate(self.iconImageView.transform, M_PI * 0.005);
+    //创建播放工具单利
+    WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
+    //滑块滚动
+    self.silder.value = musicTool.currentTime / musicTool.duration;
+    //当前时间
+    self.currentLabel.text = [self stringWithTimer:musicTool.currentTime];
+}
 //时间转换
 - (NSString *)stringWithTimer:(NSTimeInterval)time {
     int minute = time / 60;
