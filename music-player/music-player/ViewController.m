@@ -81,11 +81,23 @@
 }
 //上一首歌
 - (IBAction)previousBtnClicked {
-    
+    if (self.currentMusicIndex == 0) {
+        self.currentMusicIndex = self.musicArray.count - 1;
+    }else {
+        self.currentMusicIndex--;
+    }
+    [self configUI];
+    [self begin];
 }
 //下一首歌
 - (IBAction)nextBtnClicked {
-    
+    if (self.currentMusicIndex == self.musicArray.count - 1) {
+        self.currentMusicIndex = 0;
+    }else {
+        self.currentMusicIndex++;
+    }
+    [self configUI];
+    [self begin];
 }
 //滑块
 - (IBAction)silderClicked {
@@ -109,6 +121,8 @@
     WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
     //设置总时间
     self.durationLabel.text = [self stringWithTimer:musicTool.duration];
+    [musicTool pause];
+    self.playBtn.selected = NO;
 }
 
 //时间转换
