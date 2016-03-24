@@ -55,7 +55,8 @@
     return self.player.duration;
 }
 
-
-
+- (void)setCurrentTime:(NSTimeInterval)currentTime {
+    self.player.currentTime = currentTime;
+}
 
 @end

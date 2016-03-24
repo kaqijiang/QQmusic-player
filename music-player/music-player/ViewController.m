@@ -112,7 +112,8 @@
 }
 //滑块
 - (IBAction)silderClicked {
-    
+    WJPlayMusicTool *music = [WJPlayMusicTool shareInstance];
+    music.currentTime = self.silder.value * music.duration;
 }
 #pragma mark- UI界面配置
 - (void)configUI {
