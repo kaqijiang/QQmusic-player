@@ -83,11 +83,8 @@
         //播放
         [musicTool playMusicWithFileName:musicModel.mp3];
         //让定时器一开始不加载 不让头像转
-        if (self.num) {
-            //开启定时器
-            [self turnOnTimer];
-        }
-        self.num++;
+         [self turnOnTimer];
+        
     }
     self.playBtn.selected = !self.playBtn.selected;
 }
@@ -100,6 +97,7 @@
     }
     [self configUI];
     [self begin];
+    self.iconImageView.transform = CGAffineTransformMakeRotation(0);
 }
 //下一首歌
 - (IBAction)nextBtnClicked {
@@ -110,6 +108,7 @@
     }
     [self configUI];
     [self begin];
+    self.iconImageView.transform = CGAffineTransformMakeRotation(0);
 }
 //滑块
 - (IBAction)silderClicked {
@@ -127,14 +126,22 @@
     UIImage *image = [UIImage imageNamed:model.image];
     self.blackImageView.image = image;
     self.iconImageView.image = image;
+//    self.playBtn.selected = NO;
+    //先移除一下
+    [self turnOffTimer];
     //调用播放 为了出来总时间
     [self begin];
     //创建单利
     WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
     //设置总时间
     self.durationLabel.text = [self stringWithTimer:musicTool.duration];
-    [musicTool pause];
-    self.playBtn.selected = NO;
+    if (!self.num) {
+        [musicTool pause];
+        self.playBtn.selected = NO;
+         [self turnOffTimer];
+        self.num++;
+    }
+    
 }
 #pragma mark- 定时器创建移除
 - (void)turnOnTimer {
@@ -142,10 +149,11 @@
 }
 - (void)turnOffTimer {
     [self.timer invalidate];
+    
 }
 #pragma mark- 定时器调用方法 动态设置数据
 - (void)updateWithTimer {
-    //歌词
+    
     //头像旋转
     self.iconImageView.transform = CGAffineTransformRotate(self.iconImageView.transform, M_PI * 0.005);
     //创建播放工具单利
@@ -154,6 +162,12 @@
     self.silder.value = musicTool.currentTime / musicTool.duration;
     //当前时间
     self.currentLabel.text = [self stringWithTimer:musicTool.currentTime];
+    //歌词
+    [self updateWithLyric];
+}
+#pragma mark- 歌词显示的方法
+- (void)updateWithLyric {
+    
 }
 //时间转换
 - (NSString *)stringWithTimer:(NSTimeInterval)time {
