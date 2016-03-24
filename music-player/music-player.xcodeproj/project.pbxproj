@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041057771CA45D09002477F6 /* WJColorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 041057761CA45D09002477F6 /* WJColorLabel.m */; };
 		041433FA1CA40B67009E649A /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 041433DA1CA40B67009E649A /* MJDictionaryCache.m */; };
 		041433FB1CA40B67009E649A /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 041433DD1CA40B67009E649A /* MJExtensionConst.m */; };
 		041433FC1CA40B67009E649A /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 041433DF1CA40B67009E649A /* MJFoundation.m */; };
@@ -66,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041057751CA45D09002477F6 /* WJColorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJColorLabel.h; sourceTree = "<group>"; };
+		041057761CA45D09002477F6 /* WJColorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJColorLabel.m; sourceTree = "<group>"; };
 		041433D91CA40B67009E649A /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		041433DA1CA40B67009E649A /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		041433DB1CA40B67009E649A /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 			children = (
 				04AB975E1CA22C2000F9BC7C /* Main.storyboard */,
 				04AB97631CA22C2100F9BC7C /* LaunchScreen.storyboard */,
+				041057751CA45D09002477F6 /* WJColorLabel.h */,
+				041057761CA45D09002477F6 /* WJColorLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				04D7847D1CA4134000E5D0E7 /* WJMusicModel.m in Sources */,
 				04D784801CA417F100E5D0E7 /* WJPlayMusicTool.m in Sources */,
 				04AB975A1CA22C2000F9BC7C /* AppDelegate.m in Sources */,
+				041057771CA45D09002477F6 /* WJColorLabel.m in Sources */,
 				04D784651CA4108D00E5D0E7 /* MASCompositeConstraint.m in Sources */,
 				041434041CA40B67009E649A /* NSString+MJExtension.m in Sources */,
 				04D784671CA4108D00E5D0E7 /* MASConstraintMaker.m in Sources */,

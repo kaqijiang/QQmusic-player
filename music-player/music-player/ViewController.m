@@ -13,6 +13,7 @@
 #import "WJPlayMusicTool.h"
 #import "WJLyricParser.h"
 #import "WJLyricModel.h"
+#import "WJColorLabel.h"
 
 @interface ViewController ()
 
@@ -25,7 +26,7 @@
 //滑块
 @property (weak, nonatomic) IBOutlet UISlider *silder;
 //歌词显示label
-@property (weak, nonatomic) IBOutlet UILabel *lyricLabel;
+@property (weak, nonatomic) IBOutlet WJColorLabel *lyricLabel;
 //歌手label
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
 //头像
@@ -188,6 +189,10 @@
         //判断时间
         if (musicTool.currentTime >= firstLyric.time && musicTool.currentTime < nextLyric.time) {
             self.lyricLabel.text = firstLyric.content;
+            
+            CGFloat progress = (musicTool.currentTime - firstLyric.time) / (nextLyric.time - firstLyric.time);
+            
+            self.lyricLabel.progress = progress;
         }
     }
 }
