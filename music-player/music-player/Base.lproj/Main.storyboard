@@ -87,7 +87,7 @@
                                             <constraint firstAttribute="height" constant="46" id="fY7-09-fer"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -106,7 +106,7 @@
                                             <constraint firstAttribute="height" constant="46" id="3oI-GU-tba"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -314,19 +314,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQt-cE-vZS" userLabel="lir" customClass="WJColorLabel">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkN-Ve-MNv" userLabel="name">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcP-0z-oYM" userLabel="type">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -400,6 +400,10 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8t3-Xo-QR4" userLabel="lycView" customClass="WJLycView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -409,7 +413,11 @@
                             <constraint firstAttribute="trailing" secondItem="nxQ-PB-2dr" secondAttribute="trailing" id="6lV-ob-LS5"/>
                             <constraint firstItem="STc-He-h48" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="C7m-kY-TFr"/>
                             <constraint firstItem="STc-He-h48" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FNj-le-w5n"/>
+                            <constraint firstItem="8t3-Xo-QR4" firstAttribute="centerY" secondItem="STc-He-h48" secondAttribute="centerY" id="Hfp-zL-9y5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nxQ-PB-2dr" secondAttribute="bottom" id="KaR-ck-8nK"/>
+                            <constraint firstItem="8t3-Xo-QR4" firstAttribute="width" secondItem="STc-He-h48" secondAttribute="width" id="OEx-gv-2ez"/>
+                            <constraint firstItem="8t3-Xo-QR4" firstAttribute="height" secondItem="STc-He-h48" secondAttribute="height" id="OJK-lU-ofL"/>
+                            <constraint firstItem="8t3-Xo-QR4" firstAttribute="centerX" secondItem="STc-He-h48" secondAttribute="centerX" id="Oqh-Cc-B8X"/>
                             <constraint firstItem="nxQ-PB-2dr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QNM-ZR-Ooo"/>
                             <constraint firstAttribute="trailing" secondItem="nxQ-PB-2dr" secondAttribute="trailing" id="R2a-yI-cVm"/>
                             <constraint firstAttribute="trailing" secondItem="bap-k3-hs8" secondAttribute="trailing" id="S2e-OQ-8vP"/>
@@ -427,7 +435,14 @@
                             <constraint firstAttribute="bottom" secondItem="nxQ-PB-2dr" secondAttribute="bottom" id="wm2-Ef-yEd"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8t3-Xo-QR4"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="Hfp-zL-9y5"/>
+                                <exclude reference="OEx-gv-2ez"/>
+                                <exclude reference="OJK-lU-ofL"/>
+                                <exclude reference="Oqh-Cc-B8X"/>
                                 <exclude reference="C7m-kY-TFr"/>
                                 <exclude reference="FNj-le-w5n"/>
                                 <exclude reference="WQH-WO-wIT"/>
@@ -472,8 +487,13 @@
                                 <include reference="nxQ-PB-2dr"/>
                                 <include reference="bap-k3-hs8"/>
                                 <include reference="STc-He-h48"/>
+                                <include reference="8t3-Xo-QR4"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Hfp-zL-9y5"/>
+                                <include reference="OEx-gv-2ez"/>
+                                <include reference="OJK-lU-ofL"/>
+                                <include reference="Oqh-Cc-B8X"/>
                                 <include reference="C7m-kY-TFr"/>
                                 <include reference="bCr-kr-RaD"/>
                                 <include reference="wds-h4-y7B"/>
@@ -493,8 +513,10 @@
                         <outlet property="albumLabel" destination="GcP-0z-oYM" id="lF0-p2-Nfy"/>
                         <outlet property="blackImageView" destination="nxQ-PB-2dr" id="J3M-yi-UwY"/>
                         <outlet property="currentLabel" destination="l71-i9-xOs" id="d6r-Se-1ea"/>
+                        <outlet property="currentView" destination="STc-He-h48" id="iMT-3o-vJQ"/>
                         <outlet property="durationLabel" destination="MUa-js-psy" id="3ga-Za-dEv"/>
                         <outlet property="iconImageView" destination="beK-Bs-yOs" id="pfS-Wx-Lwd"/>
+                        <outlet property="lycView" destination="8t3-Xo-QR4" id="kn9-ka-QdF"/>
                         <outlet property="lyricLabel" destination="vQt-cE-vZS" id="4Iu-hN-qRe"/>
                         <outlet property="playBtn" destination="bd9-Gg-HKO" id="yx9-gB-KfY"/>
                         <outlet property="silder" destination="p3e-zm-jDm" id="LoI-lf-YEN"/>

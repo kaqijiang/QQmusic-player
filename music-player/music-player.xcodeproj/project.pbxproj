@@ -19,6 +19,7 @@
 		041434021CA40B67009E649A /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 041433EB1CA40B67009E649A /* NSObject+MJKeyValue.m */; };
 		041434031CA40B67009E649A /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 041433ED1CA40B67009E649A /* NSObject+MJProperty.m */; };
 		041434041CA40B67009E649A /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 041433EF1CA40B67009E649A /* NSString+MJExtension.m */; };
+		0481DEFE1CA4D260001A9179 /* WJLycView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481DEFD1CA4D260001A9179 /* WJLycView.m */; };
 		04AB97571CA22C2000F9BC7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AB97561CA22C2000F9BC7C /* main.m */; };
 		04AB975A1CA22C2000F9BC7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AB97591CA22C2000F9BC7C /* AppDelegate.m */; };
 		04AB975D1CA22C2000F9BC7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AB975C1CA22C2000F9BC7C /* ViewController.m */; };
@@ -92,6 +93,8 @@
 		041433ED1CA40B67009E649A /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		041433EE1CA40B67009E649A /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		041433EF1CA40B67009E649A /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		0481DEFC1CA4D260001A9179 /* WJLycView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJLycView.h; sourceTree = "<group>"; };
+		0481DEFD1CA4D260001A9179 /* WJLycView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJLycView.m; sourceTree = "<group>"; };
 		04AB97521CA22C2000F9BC7C /* music-player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "music-player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AB97561CA22C2000F9BC7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04AB97581CA22C2000F9BC7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				04AB97631CA22C2100F9BC7C /* LaunchScreen.storyboard */,
 				041057751CA45D09002477F6 /* WJColorLabel.h */,
 				041057761CA45D09002477F6 /* WJColorLabel.m */,
+				0481DEFC1CA4D260001A9179 /* WJLycView.h */,
+				0481DEFD1CA4D260001A9179 /* WJLycView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				041434001CA40B67009E649A /* NSObject+MJClass.m in Sources */,
 				04D7846B1CA4108D00E5D0E7 /* NSArray+MASAdditions.m in Sources */,
 				041434011CA40B67009E649A /* NSObject+MJCoding.m in Sources */,
+				0481DEFE1CA4D260001A9179 /* WJLycView.m in Sources */,
 				04D7846A1CA4108D00E5D0E7 /* MASViewConstraint.m in Sources */,
 				041433FA1CA40B67009E649A /* MJDictionaryCache.m in Sources */,
 				041433FE1CA40B67009E649A /* MJPropertyKey.m in Sources */,

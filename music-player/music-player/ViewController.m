@@ -14,8 +14,9 @@
 #import "WJLyricParser.h"
 #import "WJLyricModel.h"
 #import "WJColorLabel.h"
+#import "WJLycView.h"
 
-@interface ViewController ()
+@interface ViewController ()<WjLycViewDelegate>
 
 //开始按钮
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet WJColorLabel *lyricLabel;
 //歌手label
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
+//存放头像的view
+@property (weak, nonatomic) IBOutlet UIView *currentView;
 //头像
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 //专辑
@@ -45,6 +48,9 @@
 @property (nonatomic, strong) NSArray *lyricsArray;
 //定义判断是不是第一次点击播放
 @property( nonatomic,assign)int num;
+//用来存放scrollView视图
+@property (weak, nonatomic) IBOutlet WJLycView *lycView;
+
 @end
 
 @implementation ViewController
@@ -64,6 +70,9 @@
     
     //配置UI界面
     [self configUI];
+    
+    //设置歌词view的代理
+    self.lycView.delegate = self;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -152,6 +161,8 @@
          [self turnOffTimer];
         self.num++;
     }
+    //给歌词界面歌词赋值
+    self.lycView.lycViewArray = self.lyricsArray;
 }
 #pragma mark- 定时器创建移除
 - (void)turnOnTimer {
@@ -195,8 +206,16 @@
             CGFloat progress = (musicTool.currentTime - firstLyric.time) / (nextLyric.time - firstLyric.time);
             
             self.lyricLabel.progress = progress;
+            //给歌词页赋值当前行
+            self.lycView.currentLycIndex = i;
+            //给歌词页赋值当前行进度
+            self.lycView.progress = progress;
         }
     }
+}
+#pragma mark- 歌词view代理方法
+- (void)lyricView:(WJLycView *)lyricView hScrollViewDidScroll:(CGFloat)progress {
+    self.currentView.alpha = 1 - progress;
 }
 //时间转换
 - (NSString *)stringWithTimer:(NSTimeInterval)time {
