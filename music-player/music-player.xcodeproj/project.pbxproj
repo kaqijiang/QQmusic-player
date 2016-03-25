@@ -32,6 +32,8 @@
 		04C447EC1CA1ED23005A0424 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04C447EB1CA1ED23005A0424 /* 1.jpg */; };
 		04C447F01CA25DFD005A0424 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04C447EF1CA25DFD005A0424 /* 2.jpg */; };
 		04C447F21CA26856005A0424 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04C447F11CA26856005A0424 /* 3.jpg */; };
+		04C44DEC1CA599F900E30ED9 /* WJSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C44DEB1CA599F900E30ED9 /* WJSliderView.m */; };
+		04C44DEF1CA5A3C900E30ED9 /* WJFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C44DEE1CA5A3C900E30ED9 /* WJFormatter.m */; };
 		04D784651CA4108D00E5D0E7 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D7844D1CA4108D00E5D0E7 /* MASCompositeConstraint.m */; };
 		04D784661CA4108D00E5D0E7 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D784501CA4108D00E5D0E7 /* MASConstraint.m */; };
 		04D784671CA4108D00E5D0E7 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D784521CA4108D00E5D0E7 /* MASConstraintMaker.m */; };
@@ -113,6 +115,10 @@
 		04C447EB1CA1ED23005A0424 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		04C447EF1CA25DFD005A0424 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		04C447F11CA26856005A0424 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		04C44DEA1CA599F900E30ED9 /* WJSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJSliderView.h; sourceTree = "<group>"; };
+		04C44DEB1CA599F900E30ED9 /* WJSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJSliderView.m; sourceTree = "<group>"; };
+		04C44DED1CA5A3C900E30ED9 /* WJFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJFormatter.h; sourceTree = "<group>"; };
+		04C44DEE1CA5A3C900E30ED9 /* WJFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJFormatter.m; sourceTree = "<group>"; };
 		04D7844C1CA4108D00E5D0E7 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		04D7844D1CA4108D00E5D0E7 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		04D7844E1CA4108D00E5D0E7 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -376,6 +382,8 @@
 				04D7847F1CA417F100E5D0E7 /* WJPlayMusicTool.m */,
 				04B95BA21CA4407B003F830F /* WJLyricParser.h */,
 				04B95BA31CA4407B003F830F /* WJLyricParser.m */,
+				04C44DED1CA5A3C900E30ED9 /* WJFormatter.h */,
+				04C44DEE1CA5A3C900E30ED9 /* WJFormatter.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -389,6 +397,8 @@
 				041057761CA45D09002477F6 /* WJColorLabel.m */,
 				0481DEFC1CA4D260001A9179 /* WJLycView.h */,
 				0481DEFD1CA4D260001A9179 /* WJLycView.m */,
+				04C44DEA1CA599F900E30ED9 /* WJSliderView.h */,
+				04C44DEB1CA599F900E30ED9 /* WJSliderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -546,7 +556,9 @@
 				041433FA1CA40B67009E649A /* MJDictionaryCache.m in Sources */,
 				041433FE1CA40B67009E649A /* MJPropertyKey.m in Sources */,
 				04D784681CA4108D00E5D0E7 /* MASLayoutConstraint.m in Sources */,
+				04C44DEF1CA5A3C900E30ED9 /* WJFormatter.m in Sources */,
 				041434031CA40B67009E649A /* NSObject+MJProperty.m in Sources */,
+				04C44DEC1CA599F900E30ED9 /* WJSliderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,10 +10,12 @@
 #import "Masonry.h"
 #import "WJLyricModel.h"
 #import "WJColorLabel.h"
+#import "WJSliderView.h"
 
 @interface WJLycView ()<UIScrollViewDelegate>
 @property( nonatomic,strong)UIScrollView *hScrollView;
 @property( nonatomic,strong)UIScrollView *vScrollView;
+@property( nonatomic,weak)WJSliderView *sliderView;
 @end
 
 @implementation WJLycView
@@ -47,12 +49,18 @@
     self.vScrollView = vScrollView;
     [self addSubview:hScrollView];
     [self.hScrollView addSubview:vScrollView];
+    //添加timelabel
+    WJSliderView *sliderView = [[WJSliderView alloc]init];
+    self.sliderView = sliderView;
+    [self addSubview:self.sliderView];
+    //隐藏
+    self.sliderView.hidden = YES;
     //    测试
 //        self.hScrollView.backgroundColor = [UIColor redColor];
         self.vScrollView.backgroundColor = [UIColor orangeColor];
     //设置代理
     self.hScrollView.delegate = self;
-    
+    self.vScrollView.delegate =self;
     self.hScrollView.showsHorizontalScrollIndicator = NO;
     self.hScrollView.pagingEnabled = YES;
     self.vScrollView.showsVerticalScrollIndicator = NO;
@@ -75,10 +83,19 @@
         make.left.mas_equalTo(self.bounds.size.width);
     }];
 
-    [self layoutIfNeeded];
     
+    [self layoutIfNeeded];
     //设置contentinset
-    self.vScrollView.contentInset = UIEdgeInsetsMake(300, 0, self.vScrollView.bounds.size.height * 0.5, 0);
+    CGFloat top = self.vScrollView.bounds.size.height * 0.5;
+    CGFloat bottom = top;
+    NSLog(@"%f",top);
+    self.vScrollView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
+    
+    //设置slider内容约束
+    [self.sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+    }];
+    
 }
 #pragma mark- scrollView的代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -118,6 +135,22 @@
     }
     self.vScrollView.contentSize = CGSizeMake(0, self.rowHight * self.lycViewArray.count);
 }
+#pragma mark- scrollView代理方法
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (self.vScrollView == scrollView) {
+        self.sliderView.hidden = NO;
+    }
+}
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (!self.vScrollView.isDragging) {
+            self.sliderView.hidden = YES;
+        }
+    });
+}
+
 
 //当前行的set
 - (void)setCurrentLycIndex:(NSInteger)currentLycIndex {
@@ -131,6 +164,11 @@
 //当前行label
     WJColorLabel *label = self.vScrollView.subviews[currentLycIndex];
     label.font = [UIFont systemFontOfSize:20];
+    //动画滚动
+    [UIView animateWithDuration:1 animations:^{
+        
+        self.vScrollView.contentOffset = CGPointMake(0, self.rowHight * currentLycIndex - self.vScrollView.bounds.size.height * 0.5);
+    }];
 }
 //当前索引的get方法
 - (NSInteger)currentLycIndex {
@@ -156,12 +194,4 @@
 
 
 @end
-
-
-
-
-
-
-
-
 
