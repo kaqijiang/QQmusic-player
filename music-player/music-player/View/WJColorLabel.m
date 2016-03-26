@@ -9,7 +9,7 @@
 #import "WJColorLabel.h"
 
 @implementation WJColorLabel
- 
+
 - (void)setProgress:(CGFloat)progress {
     _progress = progress;
     //重绘
