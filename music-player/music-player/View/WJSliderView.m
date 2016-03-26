@@ -64,7 +64,7 @@
 }
 //btn 点击事件
 - (void)play {
-    
+    [[NSNotificationCenter defaultCenter]  postNotificationName:WJSliderViewNotification object:self];
 }
 
 //设置约束
@@ -86,10 +86,11 @@
         make.right.mas_equalTo(-8);
     }];
 }
-
+#pragma mark- 给timelabel赋值
 - (void)setTime:(NSTimeInterval)time {
     _time = time;
     self.timeLabel.text = [WJFormatter stringWithTimeInterval:time];
 }
 @end
 
+NSString *WJSliderViewNotification = @"CZSliderViewNotification";

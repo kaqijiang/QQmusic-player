@@ -10,4 +10,7 @@
 
 @interface WJSliderView : UIView
 @property( nonatomic,assign)NSTimeInterval time;
+
 @end
+//通知
+extern NSString *WJSliderViewNotification;

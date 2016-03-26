@@ -15,6 +15,7 @@
 #import "WJLyricModel.h"
 #import "WJColorLabel.h"
 #import "WJLycView.h"
+#import "WJSliderView.h"
 
 @interface ViewController ()<WjLycViewDelegate>
 
@@ -73,6 +74,16 @@
     
     //设置歌词view的代理
     self.lycView.delegate = self;
+    
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(silderPlay:) name:WJSliderViewNotification object:nil];
+}
+#pragma mark- 通知
+- (void)silderPlay:(NSNotification *)notification {
+    WJSliderView *slider = notification.object;
+    
+    WJPlayMusicTool * playMusic = [WJPlayMusicTool shareInstance];
+    playMusic.currentTime = slider.time;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -163,6 +174,7 @@
     }
     //给歌词界面歌词赋值
     self.lycView.lycViewArray = self.lyricsArray;
+    
 }
 #pragma mark- 定时器创建移除
 - (void)turnOnTimer {
@@ -196,7 +208,7 @@
         WJLyricModel *nextLyric = nil;
         if (i == self.lyricsArray.count - 1) {
             nextLyric = self.lyricsArray[i];
-        } else {
+        } else if (i < self.lyricsArray.count - 1){
             nextLyric = self.lyricsArray[i + 1];
         }
         //判断时间
