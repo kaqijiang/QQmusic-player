@@ -16,6 +16,7 @@
 #import "WJColorLabel.h"
 #import "WJLycView.h"
 #import "WJSliderView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()<WjLycViewDelegate>
 
@@ -198,6 +199,76 @@
     self.durationLabel.text = [self stringWithTimer:musicTool.duration];
     //歌词
     [self updateWithLyric];
+    
+    // 锁屏界面信息
+    [self lockScreen];
+}
+//锁屏信息
+- (void)lockScreen {
+    
+    MPNowPlayingInfoCenter *nowPlayingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    
+    WJMusicModel *musicModel = self.musicArray[self.currentMusicIndex];
+    
+    WJPlayMusicTool *musicTool = [WJPlayMusicTool shareInstance];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    /*  MPMediaItemPropertyAlbumTitle
+     // MPMediaItemPropertyAlbumTrackCount
+     // MPMediaItemPropertyAlbumTrackNumber
+     // MPMediaItemPropertyArtist
+     // MPMediaItemPropertyArtwork
+     // MPMediaItemPropertyComposer
+     // MPMediaItemPropertyDiscCount
+     // MPMediaItemPropertyDiscNumber
+     // MPMediaItemPropertyGenre
+     // MPMediaItemPropertyPersistentID
+     // MPMediaItemPropertyPlaybackDuration
+     // MPMediaItemPropertyTitle               */
+    dic[MPMediaItemPropertyAlbumTitle] = musicModel.album;
+    
+    dic[MPMediaItemPropertyArtist] = musicModel.singer;
+    
+    dic[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:musicModel.image]];
+    
+    dic[MPMediaItemPropertyPlaybackDuration] = @(musicTool.duration);
+    
+    dic[MPMediaItemPropertyTitle] = musicModel.name;
+    
+    dic[MPNowPlayingInfoPropertyElapsedPlaybackTime] = @(musicTool.currentTime);
+    
+    nowPlayingInfoCenter.nowPlayingInfo = dic;
+
+}
+
+#pragma mark- 远程事件
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{   /*
+     UIEventSubtypeRemoteControlPlay                 = 100,  播放
+     UIEventSubtypeRemoteControlPause                = 101,  暂停
+     UIEventSubtypeRemoteControlStop                 = 102,  停止
+     UIEventSubtypeRemoteControlTogglePlayPause      = 103,  从播放到暂停
+     UIEventSubtypeRemoteControlNextTrack            = 104,  下一曲
+     UIEventSubtypeRemoteControlPreviousTrack        = 105,  上一曲
+     UIEventSubtypeRemoteControlBeginSeekingBackward = 106,  开始快退
+     UIEventSubtypeRemoteControlEndSeekingBackward   = 107,  结束快退
+     UIEventSubtypeRemoteControlBeginSeekingForward  = 108,  开始快进
+     UIEventSubtypeRemoteControlEndSeekingForward            结束快进
+     */
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay:
+        case UIEventSubtypeRemoteControlPause:
+            [self playBtn];
+            break;
+        case UIEventSubtypeRemoteControlNextTrack:
+            [self nextBtnClicked];
+            break;
+        case UIEventSubtypeRemoteControlPreviousTrack:
+            [self previousBtnClicked];
+            break;
+        default:
+            break;
+    }
 }
 #pragma mark- 歌词显示的方法
 - (void)updateWithLyric {

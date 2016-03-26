@@ -114,6 +114,8 @@
         //取出歌词数组中的模型 再取出时间模型
         if (cuttentHang >= self.lycViewArray.count - 1) {
             cuttentHang = self.lycViewArray.count - 1;
+        } else if (cuttentHang < 0){
+            cuttentHang = 0;
         }
         WJLyricModel *timeModel = self.lycViewArray[cuttentHang];
         self.sliderView.time = timeModel.time;
